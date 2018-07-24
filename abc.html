@@ -1,0 +1,95 @@
+<!DOCTYPE html><html>
+<body data-silex-id="body-initial" class="body-initial enable-mobile silex-runtime" data-silex-type="container"  background="6909249-black-hd-background.jpg">
+    <div data-silex-type="container" class="prevent-draggable container-element editable-style silex-id-1489143154958-1 section-element" data-silex-id="silex-id-1489143154958-1">
+        <div data-silex-type="container" class="editable-style silex-element-content website-width silex-id-1489143154957-0 silex-container-content container-element prevent-draggable" data-silex-id="silex-id-1489143154957-0">
+            
+            
+        <div data-silex-type="text" class="editable-style silex-id-1532428098343-0 text-element page-photo paged-element" data-silex-id="silex-id-1532428098343-0" style=""><div class="silex-element-content normal"><h1 class="heading1" style="text-align: center;"><span style="color: rgb(234, 242, 241);">Json Formatter</span></h1></div></div><div data-silex-type="html" class="editable-style silex-id-1532428254841-2 html-element page-photo paged-element" data-silex-id="silex-id-1532428254841-2" style=""><div class="silex-element-content">
+
+<style>
+textarea {width: 800px; height: 200px; padding: 12px 20px; box-sizing: border-box; background-color: #f8f8f8; font-size: 16px; resize: none; border-style: double;}
+.button {position: relative; background-color: #4CAF50; border: none; font-size: 28px; color: #FFFFFF; padding: 20px; width: 200px; text-align: center; -webkit-transition-duration: 0.4s; transition-duration: 0.4s; text-decoration: none; overflow: hidden; cursor: pointer; border-radius: 8px;}.button:after {content: ""; background: #f1f1f1; display: block; position: absolute; padding-top: 300%; padding-left: 350%; margin-left: -20px !important; margin-top: -120%; opacity: 0; transition: all 0.8s;}.button:active:after {padding: 0; margin: 0; opacity: 1; transition: 0s;}</style>
+<center>
+<script>
+function myFunction() {
+
+
+	var data = document.getElementById("inputJson").value;
+	alert("data : "+data)
+
+	var json = PrettyPrintJsonConsole(JSON.stringify(data,null,4));
+    document.getElementById("json").innerHTML = JSON.stringify(data, null, 4);
+    document.getElementById("outputJson").innerHTML = json;
+    
+}
+
+
+function PrettyPrintJsonConsole(json) {
+
+	alert("IN PREtjkasfj" +json);
+    if (typeof json != 'string') {
+        json = JSON.stringify(json, undefined, '\t');
+    }
+
+    var 
+        arr = [],
+        _string = 'color:green',
+        _number = 'color:darkorange',
+        _boolean = 'color:blue',
+        _null = 'color:magenta',
+        _key = 'color:red';
+
+    json = json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
+        var style = _number;
+        if (/^"/.test(match)) {
+            if (/:$/.test(match)) {
+                style = _key;
+            } else {
+                style = _string;
+            }
+        } else if (/true|false/.test(match)) {
+            style = _boolean;
+        } else if (/null/.test(match)) {
+            style = _null;
+        }
+        arr.push(style);
+        arr.push('');
+        return '%c' + match + '%c';
+    });
+
+    arr.unshift(json);
+
+    console.log.apply(console, arr);
+}
+
+
+
+
+</script>
+
+	<strong>
+	<textarea cols="30" rows="2" id ="inputJson"> </textarea>
+	</strong>
+	<br>
+	<br>
+	
+	<button class="button" onclick="myFunction()"> 
+		 FORMAT
+	</button>
+
+	
+<p>
+	<span style="color: #3366ff;">
+	    
+		<textarea cols="30" rows="2" id="outputJson">		</textarea>
+	<pre id="json"> </pre>
+	</span>
+</p>
+<p>
+</p>
+</center>
+</div></div></div>
+    </div>
+   
+</body>
+</html>
